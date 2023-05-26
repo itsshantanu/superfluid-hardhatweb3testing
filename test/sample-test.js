@@ -5,7 +5,7 @@ const hre = require("hardhat");
 const hostABI = require("@superfluid-finance/ethereum-contracts/build/contracts/Superfluid.json");
 const cfaABI = require("@superfluid-finance/ethereum-contracts/build/contracts/ConstantFlowAgreementV1.json");
 const fUSDCx = require("./fUSDCx");
-const myAccount = process.env.ACCOUNT;
+// const myAccount = process.env.ACCOUNT;
 
 const getProvider = (() => {
 
@@ -42,7 +42,7 @@ let superUSDC;
 
 beforeEach(async () => {
     //truffle version of testing with web3 to keep it consistent
-    console.log(myAccount)
+    // console.log(myAccount)
     redirectAll = await RedirectAll.new("0x22ff293e14F1EC3A09B137e9e06084AFd63adDF9", "0xEd6BcbF6907D4feEEe8a8875543249bEa9D308E8", "0x8aE68021f6170E5a766bE613cEA0d75236ECCa9a", "0x8626f6940e2eb28930efb4cef49b2d1f2c9c1199")
     
     tradeableCashflow = await TradeableCashflow.new(myAccount, "Holy Grail", "GRAIL", "0x22ff293e14F1EC3A09B137e9e06084AFd63adDF9", "0xEd6BcbF6907D4feEEe8a8875543249bEa9D308E8", "0x8aE68021f6170E5a766bE613cEA0d75236ECCa9a")
@@ -53,7 +53,8 @@ beforeEach(async () => {
     superUSDC = new hre.web3.eth.Contract(fUSDCx, "0x8aE68021f6170E5a766bE613cEA0d75236ECCa9a");
 
     //account that we know has fUSDCx
-    acct1 = myAccount;
+    // acct1 = myAccount;
+    acct1 = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
     await hre.network.provider.request({
       method: "hardhat_impersonateAccount",
       params: [acct1],
